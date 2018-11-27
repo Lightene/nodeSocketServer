@@ -4,9 +4,25 @@ const io = require('socket.io')(http);
 
 const fs = require('fs');
 
-const port = 4000;
+var port = normalizePort(process.env.PORT || '4000');
 
-http.listen(4000, function(){
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+  
+    if (isNaN(port)) {
+      // named pipe
+      return val;
+    }
+  
+    if (port >= 0) {
+      // port number
+      return port;
+    }
+  
+    return false;
+  }
+
+http.listen(port, function(){
     console.log("listen on port :: " + port);
 
     http.on('close', function(){
