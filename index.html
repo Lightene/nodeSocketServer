@@ -35,22 +35,21 @@
     <script>
     $(function () {
 
-        let id = $('#n').val();
-
         var socket = io();
-        
+
+        let id="user";
         socket.emit('client_id',id);
 
         socket.on('Login_id',function(id){
-            console.log("YE");
             $('#messages').append($('<li style="color: blue;">').text(id+"님이 입장하셨습니다."));
         })
 
 
         $('form').submit(function(){
-        socket.emit('chat msg', {id :id, chat:$('#m').val()});
-        $('#m').val('');
-        return false;
+            id= $('#n').val()
+            socket.emit('chat msg', {id :id, chat:$('#m').val()});
+            $('#m').val('');
+            return false;
         });
 
         socket.on('chat msg', function(msg){
