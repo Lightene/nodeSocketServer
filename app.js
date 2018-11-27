@@ -4,7 +4,7 @@ const io = require('socket.io')(http);
 
 const fs = require('fs');
 
-var port = normalizePort(process.env.PORT || '4000');
+var port = normalizePort(process.env.PORT || '3000');
 
 function normalizePort(val) {
     var port = parseInt(val, 10);
