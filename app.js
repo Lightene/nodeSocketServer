@@ -22,7 +22,7 @@ function normalizePort(val) {
     return false;
   }
 
-http.listen(port, function(){
+http.listen(3000, function(){
     console.log("listen on port :: " + port);
 
     http.on('close', function(){
