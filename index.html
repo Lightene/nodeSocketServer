@@ -37,7 +37,7 @@
 
         var socket = io();
 
-        let id="user";
+        let id = "user";
         socket.emit('client_id',id);
 
         socket.on('Login_id',function(id){

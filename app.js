@@ -1,28 +1,14 @@
+// Socket port  ::  4000
+// HTTP port    ::  3000
+
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 const fs = require('fs');
 
-var port = normalizePort(process.env.PORT || '3000');
-
-function normalizePort(val) {
-    var port = parseInt(val, 10);
-  
-    if (isNaN(port)) {
-      // named pipe
-      return val;
-    }
-  
-    if (port >= 0) {
-      // port number
-      return port;
-    }
-  
-    return false;
-  }
-
-http.listen(3000, function(){
+const port = 4000;
+http.listen(port, function(){
     console.log("listen on port :: " + port);
 
     http.on('close', function(){
@@ -83,3 +69,5 @@ io.on('connection', function(socket){
     });
 
 });
+
+module.exports = app;
